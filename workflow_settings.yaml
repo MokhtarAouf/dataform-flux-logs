@@ -2,3 +2,4 @@ defaultProject: dataform-training-491213
 defaultDataset: dataform
 defaultAssertionDataset: dataform_assertions
 dataformCoreVersion: 3.0.42
+defaultLocation: europe-west9

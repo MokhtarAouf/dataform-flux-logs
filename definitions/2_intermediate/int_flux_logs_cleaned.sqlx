@@ -1,0 +1,17 @@
+config {
+  type: "table",
+  name: "int_flux_logs_cleaned",
+  description: "Nettoyage des statuts et filtrage des logs vides",
+  columns: {
+    status_clean: "Statut uniformisé en MAJUSCULES via JS"
+  }
+}
+
+SELECT
+  event_time,
+  flow_name,
+  -- On appelle ta fonction JavaScript définie dans includes/utils.js
+  ${utils.clean_status("status")} as status_clean,
+  rows_count
+FROM ${ref("raw_flux_logs")}
+WHERE rows_count > 0

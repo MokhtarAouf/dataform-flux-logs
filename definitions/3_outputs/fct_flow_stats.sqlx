@@ -1,0 +1,12 @@
+config {
+  type: "table",
+  name: "fct_flow_stats",
+  description: "Statistiques finales agrégées"
+}
+
+SELECT
+  flow_name,
+  COUNT(*) as nb_executions,
+  SUM(rows_count) as total_lignes_traitees
+FROM ${ref("int_flux_logs_cleaned")}
+GROUP BY 1

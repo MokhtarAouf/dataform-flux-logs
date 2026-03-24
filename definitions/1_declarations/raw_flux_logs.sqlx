@@ -1,0 +1,20 @@
+config {
+  type: "view",
+  name: "raw_flux_logs",
+  description: "Simulation des logs bruts provenant des flux ETL",
+  columns: {
+    event_time: "Heure du log",
+    status: "État du flux (success/error)",
+    flow_name: "Nom du flux concerné",
+    rows_count: "Nombre de lignes traitées"
+  }
+}
+
+-- Ici on simule des données brutes un peu 'sales' (minuscules, etc.)
+SELECT "2026-03-24 08:00:10" as event_time, "success" as status, "load_drinks" as flow_name, 500 as rows_count
+UNION ALL
+SELECT "2026-03-24 09:15:00" as event_time, "error" as status, "load_meals" as flow_name, 0 as rows_count
+UNION ALL
+SELECT "2026-03-24 10:30:45" as event_time, "success" as status, "load_drinks" as flow_name, 120 as rows_count
+UNION ALL
+SELECT "2026-03-24 11:00:00" as event_time, "SUCCESS" as status, "load_users" as flow_name, 10 as rows_count
