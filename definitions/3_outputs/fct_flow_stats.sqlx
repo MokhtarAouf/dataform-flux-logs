@@ -1,7 +1,13 @@
 config {
   type: "table",
   name: "fct_flow_stats",
-  description: "Statistiques finales agrégées"
+  description: "Statistiques finales agrégées par flux",
+  assertions: {
+    uniqueKey: ["flow_name"],
+    rowConditions: [
+      "total_lignes_traitees >= 0"
+    ]
+  }
 }
 
 SELECT
